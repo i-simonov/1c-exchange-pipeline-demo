@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<Group>Vertical</Group>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаФормаПолучитьТаблицуИJSON" id="1">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ФормаПолучитьТаблицуИJSON</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Получить JSON</v8:content>
+					</v8:item>
+				</Title>
+				<ButtonImportance>Main</ButtonImportance>
+				<ExtendedTooltip name="ФормаФормаПолучитьТаблицуИJSONРасширеннаяПодсказка" id="2"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Ссылка" id="50">
+			<DataPath>Ссылка</DataPath>
+			<ContextMenu name="СсылкаКонтекстноеМеню" id="51"/>
+			<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="52"/>
+		</InputField>
+		<InputField name="Узел" id="112">
+			<DataPath>Узел</DataPath>
+			<ContextMenu name="УзелКонтекстноеМеню" id="113"/>
+			<ExtendedTooltip name="УзелРасширеннаяПодсказка" id="114"/>
+		</InputField>
+		<InputField name="ПланОбменаПолноеИмя" id="109">
+			<DataPath>ПланОбменаПолноеИмя</DataPath>
+			<ContextMenu name="ПланОбменаПолноеИмяКонтекстноеМеню" id="110"/>
+			<ExtendedTooltip name="ПланОбменаПолноеИмяРасширеннаяПодсказка" id="111"/>
+		</InputField>
+		<InputField name="КонвейерПолноеИмя" id="106">
+			<DataPath>КонвейерПолноеИмя</DataPath>
+			<ContextMenu name="КонвейерПолноеИмяКонтекстноеМеню" id="107"/>
+			<ExtendedTooltip name="КонвейерПолноеИмяРасширеннаяПодсказка" id="108"/>
+		</InputField>
+		<Pages name="Группа1" id="6">
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="7"/>
+			<ChildItems>
+				<Page name="Группа3" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>JSON</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="11"/>
+					<ChildItems>
+						<Table name="Результат" id="81">
+							<Representation>List</Representation>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Результат</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="РезультатКонтекстноеМеню" id="82"/>
+							<AutoCommandBar name="РезультатКоманднаяПанель" id="83"/>
+							<ExtendedTooltip name="РезультатРасширеннаяПодсказка" id="84"/>
+							<SearchStringAddition name="РезультатСтрокаПоиска" id="85">
+								<AdditionSource>
+									<Item>Результат</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="РезультатСтрокаПоискаКонтекстноеМеню" id="86"/>
+								<ExtendedTooltip name="РезультатСтрокаПоискаРасширеннаяПодсказка" id="87"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="РезультатСостояниеПросмотра" id="88">
+								<AdditionSource>
+									<Item>Результат</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="РезультатСостояниеПросмотраКонтекстноеМеню" id="89"/>
+								<ExtendedTooltip name="РезультатСостояниеПросмотраРасширеннаяПодсказка" id="90"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="РезультатУправлениеПоиском" id="91">
+								<AdditionSource>
+									<Item>Результат</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="РезультатУправлениеПоискомКонтекстноеМеню" id="92"/>
+								<ExtendedTooltip name="РезультатУправлениеПоискомРасширеннаяПодсказка" id="93"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="РезультатСсылка" id="94">
+									<DataPath>Результат.Ссылка</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="РезультатСсылкаКонтекстноеМеню" id="95"/>
+									<ExtendedTooltip name="РезультатСсылкаРасширеннаяПодсказка" id="96"/>
+								</InputField>
+								<InputField name="РезультатТело" id="97">
+									<DataPath>Результат.Тело</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="РезультатТелоКонтекстноеМеню" id="98"/>
+									<ExtendedTooltip name="РезультатТелоРасширеннаяПодсказка" id="99"/>
+								</InputField>
+								<InputField name="РезультатЗаголовки" id="100">
+									<DataPath>Результат.Заголовки</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="РезультатЗаголовкиКонтекстноеМеню" id="101"/>
+									<ExtendedTooltip name="РезультатЗаголовкиРасширеннаяПодсказка" id="102"/>
+								</InputField>
+								<InputField name="РезультатПолучатели" id="103">
+									<DataPath>Результат.Получатели</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="РезультатПолучателиКонтекстноеМеню" id="104"/>
+									<ExtendedTooltip name="РезультатПолучателиРасширеннаяПодсказка" id="105"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<TextDocumentField name="РезультатJSON" id="12">
+							<Visible>false</Visible>
+							<ContextMenu name="РезультатJSONКонтекстноеМеню" id="13"/>
+							<ExtendedTooltip name="РезультатJSONРасширеннаяПодсказка" id="14"/>
+						</TextDocumentField>
+						<Table name="ТаблицаОбъектСообщение" id="53">
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаОбъектСообщениеКонтекстноеМеню" id="54"/>
+							<AutoCommandBar name="ТаблицаОбъектСообщениеКоманднаяПанель" id="55"/>
+							<ExtendedTooltip name="ТаблицаОбъектСообщениеРасширеннаяПодсказка" id="56"/>
+							<SearchStringAddition name="ТаблицаОбъектСообщениеСтрокаПоиска" id="57">
+								<AdditionSource>
+									<Item>ТаблицаОбъектСообщение</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаОбъектСообщениеСтрокаПоискаКонтекстноеМеню" id="58"/>
+								<ExtendedTooltip name="ТаблицаОбъектСообщениеСтрокаПоискаРасширеннаяПодсказка" id="59"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаОбъектСообщениеСостояниеПросмотра" id="60">
+								<AdditionSource>
+									<Item>ТаблицаОбъектСообщение</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаОбъектСообщениеСостояниеПросмотраКонтекстноеМеню" id="61"/>
+								<ExtendedTooltip name="ТаблицаОбъектСообщениеСостояниеПросмотраРасширеннаяПодсказка" id="62"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаОбъектСообщениеУправлениеПоиском" id="63">
+								<AdditionSource>
+									<Item>ТаблицаОбъектСообщение</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаОбъектСообщениеУправлениеПоискомКонтекстноеМеню" id="64"/>
+								<ExtendedTooltip name="ТаблицаОбъектСообщениеУправлениеПоискомРасширеннаяПодсказка" id="65"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ТаблицаОбъектСообщениеНомерСтроки" id="66">
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаОбъектСообщениеНомерСтрокиКонтекстноеМеню" id="67"/>
+									<ExtendedTooltip name="ТаблицаОбъектСообщениеНомерСтрокиРасширеннаяПодсказка" id="68"/>
+								</LabelField>
+								<InputField name="ТаблицаОбъектСообщениеСсылка" id="69">
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаОбъектСообщениеСсылкаКонтекстноеМеню" id="70"/>
+									<ExtendedTooltip name="ТаблицаОбъектСообщениеСсылкаРасширеннаяПодсказка" id="71"/>
+								</InputField>
+								<InputField name="ТаблицаОбъектСообщениеСообщение" id="72">
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаОбъектСообщениеСообщениеКонтекстноеМеню" id="73"/>
+									<ExtendedTooltip name="ТаблицаОбъектСообщениеСообщениеРасширеннаяПодсказка" id="74"/>
+								</InputField>
+								<CheckBoxField name="ТаблицаОбъектСообщениеОшибка" id="75">
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаОбъектСообщениеОшибкаКонтекстноеМеню" id="76"/>
+									<ExtendedTooltip name="ТаблицаОбъектСообщениеОшибкаРасширеннаяПодсказка" id="77"/>
+								</CheckBoxField>
+								<InputField name="ТаблицаОбъектСообщениеОписаниеОшибки" id="78">
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаОбъектСообщениеОписаниеОшибкиКонтекстноеМеню" id="79"/>
+									<ExtendedTooltip name="ТаблицаОбъектСообщениеОписаниеОшибкиРасширеннаяПодсказка" id="80"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.Демо_КОД_Обработчик_ТоварыВJSON</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Ссылка" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Демо_КОД_Товары</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Save>
+				<Field>Ссылка</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Результат" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результат</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Ссылка" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:AnyIBRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Тело" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тело</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Заголовки" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заголовки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Получатели" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Получатели</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="КонвейерПолноеИмя" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Конвейер полное имя</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПланОбменаПолноеИмя" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>План обмена полное имя</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Узел" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Узел</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:ExchangePlanRef.Демо_КОД_ОбменСайтом</v8:Type>
+			</Type>
+			<Save>
+				<Field>Узел</Field>
+			</Save>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ФормаПолучитьТаблицуИJSON" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Форма получить таблицу ИJSON</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Форма получить таблицу ИJSON</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ФормаПолучитьТаблицуИJSON</Action>
+		</Command>
+	</Commands>
+</Form>
