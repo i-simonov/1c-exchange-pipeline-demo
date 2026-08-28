@@ -1,3 +1,0 @@
-# Переопределяемые модули принадлежат демо-конфигурации и не обновляются из ядра.
-src/CommonModules/*Переопределяем*.xml merge=keep-demo
-src/CommonModules/*Переопределяем*/Ext/Module.bsl merge=keep-demo
