@@ -12,6 +12,9 @@
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<InputField name="Ссылка" id="1">
 			<DataPath>Ссылка</DataPath>
@@ -22,6 +25,9 @@
 			<DataPath>ПланОбменаПолноеИмя</DataPath>
 			<ContextMenu name="ПланОбменаПолноеИмяКонтекстноеМеню" id="65"/>
 			<ExtendedTooltip name="ПланОбменаПолноеИмяРасширеннаяПодсказка" id="66"/>
+			<Events>
+				<Event name="OnChange">ПланОбменаПолноеИмяПриИзменении</Event>
+			</Events>
 		</InputField>
 		<InputField name="КонвейерПолноеИмя" id="61">
 			<DataPath>КонвейерПолноеИмя</DataPath>
