@@ -13,7 +13,7 @@
 					<v8:content>КОД подписки на события переопределяемый</v8:content>
 				</v8:item>
 			</Synonym>
-			<Comment/>
+			<Comment>Локальная реализация демо-конфигурации.</Comment>
 			<Global>false</Global>
 			<ClientManagedApplication>false</ClientManagedApplication>
 			<Server>true</Server>
