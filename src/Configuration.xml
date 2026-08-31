@@ -53,7 +53,7 @@
 				</v8:item>
 			</Synonym>
 			<Comment/>
-			<ConfigurationExtensionPurpose>Customization</ConfigurationExtensionPurpose>
+			<ConfigurationExtensionPurpose>AddOn</ConfigurationExtensionPurpose>
 			<KeepMappingToExtendedConfigurationObjectsByIDs>false</KeepMappingToExtendedConfigurationObjectsByIDs>
 			<NamePrefix>КОД_</NamePrefix>
 			<ConfigurationExtensionCompatibilityMode>Version8_3_24</ConfigurationExtensionCompatibilityMode>
@@ -63,15 +63,50 @@
 			</UsePurposes>
 			<ScriptVariant>Russian</ScriptVariant>
 			<DefaultRoles/>
-			<Vendor/>
-			<Version/>
-			<Caption/>
-			<ShortCaption/>
-			<BriefInformation/>
-			<DetailedInformation/>
-			<Copyright/>
-			<VendorInformationAddress/>
-			<ConfigurationInformationAddress/>
+			<Vendor>i-simonov</Vendor>
+			<Version>1.0.1</Version>
+			<Caption>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Демо конвейера обмена данными</v8:content>
+				</v8:item>
+			</Caption>
+			<ShortCaption>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>КОД Demo</v8:content>
+				</v8:item>
+			</ShortCaption>
+			<BriefInformation>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Демонстрационное расширение с готовыми сценариями обмена и тестовыми данными.</v8:content>
+				</v8:item>
+			</BriefInformation>
+			<DetailedInformation>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Самостоятельная демонстрация конвейера обмена данными с тестовыми объектами, начальными данными и исходящей очередью. Только для знакомства, разработки и тестирования; не использовать в рабочей базе. Исходный код распространяется по лицензии MIT.</v8:content>
+				</v8:item>
+			</DetailedInformation>
+			<Copyright>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>© 2026 Simonov</v8:content>
+				</v8:item>
+			</Copyright>
+			<VendorInformationAddress>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>https://github.com/i-simonov</v8:content>
+				</v8:item>
+			</VendorInformationAddress>
+			<ConfigurationInformationAddress>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>https://github.com/i-simonov/1c-exchange-pipeline-demo</v8:content>
+				</v8:item>
+			</ConfigurationInformationAddress>
 		</Properties>
 		<ChildObjects>
 			<Language>Русский</Language>
