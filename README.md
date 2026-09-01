@@ -199,3 +199,9 @@ git -C ../1c-exchange-pipeline pull --ff-only
 - ядро: [i-simonov/1c-exchange-pipeline](https://github.com/i-simonov/1c-exchange-pipeline).
 
 Проект распространяется по лицензии [MIT](LICENSE).
+
+## Публикация на Infostart
+
+[Статья о проекте на Infostart](https://infostart.ru/1c/articles/2772812/)
+
+[![Infostart](https://infostart.ru/bitrix/templates/sandbox_empty/assets/tpl/abo/img/logo.svg)](https://infostart.ru/1c/articles/2772812/)
