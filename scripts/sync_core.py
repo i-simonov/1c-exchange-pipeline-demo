@@ -11,24 +11,27 @@ from pathlib import Path
 
 
 SYNC_PATHS = (
+    "DataProcessors/КОД_Обработчик_ИсключениеОтправителя.xml",
+    "DataProcessors/КОД_Обработчик_ИсключениеОтправителя",
     "CommonModules/КОД_ДиспетчерРегистрацииКОбмену.xml",
     "CommonModules/КОД_ДиспетчерРегистрацииКОбмену",
     "CommonPictures/КОД_КонвейерОбменаДанными.xml",
     "CommonPictures/КОД_КонвейерОбменаДанными",
-    "DataProcessors/КОД_КонвейерОбработчиковБазовый.xml",
-    "DataProcessors/КОД_КонвейерОбработчиковБазовый",
-    "DataProcessors/КОД_РеестрСценариев_ИмяПланаОбмена.xml",
-    "DataProcessors/КОД_РеестрСценариев_ИмяПланаОбмена",
+    "DataProcessors/КОД_КонвейерОбработчиковРегистрацияБазовый.xml",
+    "DataProcessors/КОД_КонвейерОбработчиковРегистрацияБазовый",
+    "DataProcessors/КОД_РеестрСценариевРегистрация_ИмяПланаОбмена.xml",
+    "DataProcessors/КОД_РеестрСценариевРегистрация_ИмяПланаОбмена",
     "DataProcessors/КОД_РучнаяРегистрация.xml",
     "DataProcessors/КОД_РучнаяРегистрация",
     "Languages/Русский.xml",
 )
 
 METADATA_PREFIXES = (
+    "DataProcessor.КОД_Обработчик_ИсключениеОтправителя",
     "CommonModule.КОД_ДиспетчерРегистрацииКОбмену",
     "CommonPicture.КОД_КонвейерОбменаДанными",
-    "DataProcessor.КОД_КонвейерОбработчиковБазовый",
-    "DataProcessor.КОД_РеестрСценариев_ИмяПланаОбмена",
+    "DataProcessor.КОД_КонвейерОбработчиковРегистрацияБазовый",
+    "DataProcessor.КОД_РеестрСценариевРегистрация_ИмяПланаОбмена",
     "DataProcessor.КОД_РучнаяРегистрация",
     "Language.Русский",
 )
@@ -39,6 +42,7 @@ def parse_arguments():
     parser.add_argument("--core", required=True, type=Path)
     parser.add_argument("--demo", required=True, type=Path)
     parser.add_argument("--commit", required=True)
+
     return parser.parse_args()
 
 
@@ -68,6 +72,7 @@ def git_status(repository, relative_path):
         check=True,
         stdout=subprocess.PIPE,
     )
+
     return result.stdout
 
 
@@ -80,8 +85,10 @@ def directory_snapshot(path):
         return None
 
     result = {}
+
     for item in path.rglob("*"):
         relative_path = item.relative_to(path).as_posix()
+
         if item.is_symlink():
             result[relative_path] = ("link", os.readlink(item))
         elif item.is_dir():
@@ -90,19 +97,23 @@ def directory_snapshot(path):
             result[relative_path] = ("file", item.read_bytes())
         else:
             result[relative_path] = ("other", None)
+
     return result
 
 
 def same_path(source, destination):
     if source.is_file():
         return same_file(source, destination)
+
     if source.is_dir():
         return directory_snapshot(source) == directory_snapshot(destination)
+
     return False
 
 
 def validate_sync_paths(core_source, demo_source, demo_repository):
     conflicts = []
+
     for relative_path_text in SYNC_PATHS:
         relative_path = Path(relative_path_text)
         source = core_source / relative_path
@@ -114,6 +125,7 @@ def validate_sync_paths(core_source, demo_source, demo_repository):
             raise RuntimeError(f"Core path does not exist: {source}")
 
         demo_relative_path = Path("src") / relative_path
+
         if git_status(demo_repository, demo_relative_path) and not same_path(source, destination):
             conflicts.append(os.fspath(demo_relative_path))
 
@@ -133,6 +145,7 @@ def replace_path(source, destination):
         shutil.rmtree(destination)
 
     destination.parent.mkdir(parents=True, exist_ok=True)
+
     if source.is_dir():
         shutil.copytree(source, destination, symlinks=True)
     else:
@@ -146,15 +159,19 @@ def metadata_versions(xml_content, description):
         raise RuntimeError(f"Invalid {description}: {error}") from error
 
     result = {}
+
     for element in root.iter():
         if element.tag.rsplit("}", 1)[-1] != "Metadata":
             continue
+
         name = element.attrib.get("name")
+
         if name and is_linked_metadata(name):
             result[name] = (
                 element.attrib.get("id"),
                 element.attrib.get("configVersion"),
             )
+
     return result
 
 
@@ -165,6 +182,7 @@ def head_config_dump(demo_repository):
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     )
+
     return result.stdout
 
 
@@ -173,10 +191,13 @@ def validate_metadata(core_metadata, demo_metadata, head_metadata):
         missing = sorted(set(core_metadata) - set(demo_metadata))
         extra = sorted(set(demo_metadata) - set(core_metadata))
         details = []
+
         if missing:
             details.append("missing in demo: " + ", ".join(missing))
+
         if extra:
             details.append("missing in core: " + ", ".join(extra))
+
         raise RuntimeError(
             "Linked ConfigDumpInfo.xml structure differs ("
             + "; ".join(details)
@@ -185,17 +206,23 @@ def validate_metadata(core_metadata, demo_metadata, head_metadata):
 
     for name, (core_id, core_version) in core_metadata.items():
         demo_id, demo_version = demo_metadata[name]
+
         if core_id != demo_id:
             raise RuntimeError(f"Metadata UUID differs for {name}: core={core_id}, demo={demo_id}")
+
         if core_version is None or demo_version is None:
             raise RuntimeError(f"configVersion is missing for linked metadata: {name}")
 
         head_value = head_metadata.get(name)
+
         if head_value is None:
             raise RuntimeError(f"Linked metadata is missing in demo HEAD: {name}")
+
         head_id, head_version = head_value
+
         if head_id != demo_id:
             raise RuntimeError(f"Metadata UUID differs from demo HEAD for {name}")
+
         if demo_version not in (head_version, core_version):
             raise RuntimeError(
                 f"Local configVersion was changed for {name}. "
@@ -212,6 +239,7 @@ def replace_config_versions(demo_content, core_metadata):
             r'<Metadata\b(?=[^>]*\bname="' + re.escape(name) + r'")[^>]*>'
         )
         matches = list(tag_pattern.finditer(text))
+
         if len(matches) != 1:
             raise RuntimeError(f"Expected one ConfigDumpInfo.xml entry for {name}, found {len(matches)}")
 
@@ -223,11 +251,14 @@ def replace_config_versions(demo_content, core_metadata):
             tag,
             count=1,
         )
+
         if replacements != 1:
             raise RuntimeError(f"configVersion attribute not found for {name}")
+
         text = text[: match.start()] + updated_tag + text[match.end() :]
 
     encoded = text.encode("utf-8")
+
     return (b"\xef\xbb\xbf" + encoded) if has_bom else encoded
 
 
@@ -254,6 +285,7 @@ def synchronize(args):
         replace_path(core_source / relative_path, demo_source / relative_path)
 
     updated_dump = replace_config_versions(demo_content, core_metadata)
+
     if updated_dump != demo_content:
         demo_dump_path.write_bytes(updated_dump)
 
@@ -265,7 +297,9 @@ def main():
         synchronize(parse_arguments())
     except (OSError, RuntimeError, subprocess.CalledProcessError) as error:
         print(f"sync-core: {error}", file=sys.stderr)
+
         return 1
+
     return 0
 
 
