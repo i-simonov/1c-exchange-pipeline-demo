@@ -24,8 +24,8 @@
 			</Picture>
 			<Content>
 				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.КОД_ДиспетчерРегистрацииКОбмену</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_РеестрСценариев_ОбменССайтом</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.КОД_КонвейерОбработчиковБазовый</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_РеестрСценариевРегистрация_ОбменССайтом</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.КОД_КонвейерОбработчиковРегистрацияБазовый</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.КОД_РучнаяРегистрация</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">ExchangePlan.Демо_КОД_ОбменСайтом</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.Демо_КОД_ОбменПередЗаписьюДокументы</xr:Item>
