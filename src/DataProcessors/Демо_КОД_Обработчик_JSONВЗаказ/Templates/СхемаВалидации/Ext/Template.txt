@@ -1,0 +1,80 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:1c-exchange:schema:order",
+  "title": "Заказ",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "guid",
+    "number",
+    "date",
+    "posted",
+    "warehouse",
+    "items"
+  ],
+  "properties": {
+    "guid": {
+      "$ref": "#/$defs/guid"
+    },
+    "number": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}$"
+    },
+    "posted": {
+      "type": "boolean"
+    },
+    "warehouse": {
+      "oneOf": [
+        {
+          "$ref": "urn:1c-exchange:schema:warehouse#/$defs/warehouse"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/orderItem"
+      }
+    }
+  },
+  "$defs": {
+    "guid": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+    },
+    "orderItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "line_number",
+        "product",
+        "quantity"
+      ],
+      "properties": {
+        "line_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "product": {
+          "oneOf": [
+            {
+              "$ref": "urn:1c-exchange:schema:product#/$defs/product"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "quantity": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

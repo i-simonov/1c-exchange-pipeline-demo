@@ -39,10 +39,41 @@
 				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_МаршрутизаторЗаказов</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_СвязаннаяРегистрацияТоваров</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_МаршрутизаторТоваров</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_ОтправительСообщенияВОчередь</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.Демо_КОД_ИсходящаяОчередьСообщений</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.КОД_Обработчик_ОтправительСообщенияВОчередь</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.КОД_ИсходящаяОчередьСообщений</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.Демо_Заказ</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.КОД_КонвейерОбменаДанными</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.КОД_ОтложенныйПроцессинг</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.КОД_ОшибкиЗагрузкиСообщений</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.КОД_ВходящаяОчередьСообщений</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_РеестрСценариевРегистрация_ОбменПортал</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.КОД_Обработчик_ИсключениеОтправителя</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_JSONВТовары</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_JSONВСкладыХранения</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_JSONВЗаказ</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.КОД_КонвейерОбработчиковЗагрузкаБазовый</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_ВалидацияПоJSONSchema</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_РеестрСценариевЗагрузка_ОбменССайтом</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.КОД_РеестрСценариевРегистрация_ИмяПланаОбмена</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.КОД_СостоянияОтложеннойОбработки</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.КОД_ВидыОбработкиДокументов</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.КОД_ПорцияЗагрузкиСообщений</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.Демо_КОД_ВерсияДанных</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ScheduledJob.КОД_ПовторнаяЗагрузкаСообщений</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ScheduledJob.КОД_ОтложенныйПроцессинг</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ScheduledJob.КОД_ЗагрузкаСообщений</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.КОД_ОтложенноеПроведениеОбработкаПроведения</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.КОД_ОтложенноеПроведениеПередУдалением</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.КОД_ОтложенноеПроведениеПриЗаписи</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.Демо_КОД_ОбменПриЗаписиДокументы</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ExchangePlan.Демо_КОД_ОбменПортал</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.КОД_ДиспетчерЗагрузкиСообщенийПереопределяемый</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.КОД_ДиспетчерЗагрузкиСообщений</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.КОД_ПовторнаяЗагрузкаСообщений</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.КОД_ОтложенныйПроцессинг</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.КОД_ПодпискиНаСобытияПереопределяемый</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.КОД_ДиспетчерРегистрацииКОбменуПереопределяемый</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.Демо_Заказы</xr:Item>
 			</Content>
 		</Properties>
 		<ChildObjects>

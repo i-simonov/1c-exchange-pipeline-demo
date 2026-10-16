@@ -8,6 +8,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Демо планы обмены</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Планы обмена</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment/>
 			<IncludeHelpInContents>true</IncludeHelpInContents>
@@ -17,6 +21,7 @@
 			<Picture/>
 			<Content>
 				<xr:Item xsi:type="xr:MDObjectRef">ExchangePlan.Демо_КОД_ОбменСайтом</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ExchangePlan.Демо_КОД_ОбменПортал</xr:Item>
 			</Content>
 		</Properties>
 		<ChildObjects/>

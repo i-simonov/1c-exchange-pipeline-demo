@@ -8,6 +8,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Демо обработчики</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обработчики</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment/>
 			<IncludeHelpInContents>true</IncludeHelpInContents>
@@ -26,7 +30,28 @@
 				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_МаршрутизаторЗаказов</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_МаршрутизаторТоваров</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_СвязаннаяРегистрацияТоваров</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_ОтправительСообщенияВОчередь</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.КОД_Обработчик_ОтправительСообщенияВОчередь</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_РеестрСценариевРегистрация_ОбменПортал</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.КОД_Обработчик_ИсключениеОтправителя</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_JSONВТовары</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_JSONВСкладыХранения</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_JSONВЗаказ</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.КОД_КонвейерОбработчиковЗагрузкаБазовый</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_Обработчик_ВалидацияПоJSONSchema</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.Демо_КОД_РеестрСценариевЗагрузка_ОбменССайтом</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.КОД_РеестрСценариевРегистрация_ИмяПланаОбмена</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.КОД_ПорцияЗагрузкиСообщений</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ScheduledJob.КОД_ПовторнаяЗагрузкаСообщений</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ScheduledJob.КОД_ОтложенныйПроцессинг</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ScheduledJob.КОД_ЗагрузкаСообщений</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.КОД_ОтложенноеПроведениеОбработкаПроведения</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.КОД_ОтложенноеПроведениеПередУдалением</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.КОД_ОтложенноеПроведениеПриЗаписи</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.Демо_КОД_ОбменПриЗаписиДокументы</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.Демо_КОД_ОбменПередЗаписьюДокументы</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.КОД_ОтложеннаяОбработкаПриЗаписиСправочники</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.КОД_ОтложеннаяОбработкаПередУдалениемСправочники</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.КОД_ОтложеннаяОбработкаУдаленияПроведения</xr:Item>
 			</Content>
 		</Properties>
 		<ChildObjects/>

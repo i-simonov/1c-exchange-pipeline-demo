@@ -1,0 +1,35 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:1c-exchange:schema:warehouse",
+  "title": "Склады хранения",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/warehouse"
+  },
+  "$defs": {
+    "warehouse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "guid",
+        "code",
+        "name"
+      ],
+      "properties": {
+        "guid": {
+          "$ref": "#/$defs/guid"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "guid": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+    }
+  }
+}
