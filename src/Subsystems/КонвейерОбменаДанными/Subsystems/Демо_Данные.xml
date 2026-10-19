@@ -26,7 +26,6 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Document.Демо_Заказ</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.КОД_ИсходящаяОчередьСообщений</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.КОД_ОтложенныйПроцессинг</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">DefinedType.КОД_ОбъектыОтложеннойОбработки</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.КОД_ОшибкиЗагрузкиСообщений</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.КОД_ВходящаяОчередьСообщений</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.КОД_СостоянияОтложеннойОбработки</xr:Item>

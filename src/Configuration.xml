@@ -64,7 +64,7 @@
 			<ScriptVariant>Russian</ScriptVariant>
 			<DefaultRoles/>
 			<Vendor>i-simonov</Vendor>
-			<Version>1.0.1</Version>
+			<Version>2.0.0</Version>
 			<Caption>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -135,7 +135,6 @@
 			<ScheduledJob>КОД_ЗагрузкаСообщений</ScheduledJob>
 			<ScheduledJob>КОД_ОтложенныйПроцессинг</ScheduledJob>
 			<ScheduledJob>КОД_ПовторнаяЗагрузкаСообщений</ScheduledJob>
-			<DefinedType>КОД_ОбъектыОтложеннойОбработки</DefinedType>
 			<Constant>Демо_КОД_ВерсияДанных</Constant>
 			<Constant>КОД_ПорцияЗагрузкиСообщений</Constant>
 			<Catalog>Демо_КОД_КатегорииТоваров</Catalog>
