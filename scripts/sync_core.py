@@ -10,6 +10,10 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
+DEFERRED_REGISTER_PATH = "InformationRegisters/КОД_ОтложенныйПроцессинг.xml"
+DEFERRED_REGISTER_METADATA = "InformationRegister.КОД_ОтложенныйПроцессинг"
+
+
 SYNC_PATHS = (
     "DataProcessors/КОД_Обработчик_ИсключениеОтправителя.xml",
     "DataProcessors/КОД_Обработчик_ИсключениеОтправителя",
@@ -162,6 +166,41 @@ def same_path(source, destination):
     return False
 
 
+def reference_type_span(content, description):
+    namespaces = {"md": "http://v8.1c.ru/8.3/MDClasses"}
+    try:
+        root = ET.fromstring(content)
+    except ET.ParseError as error:
+        raise RuntimeError(f"Invalid {description}: {error}") from error
+
+    types = root.findall(
+        "md:InformationRegister/md:ChildObjects/md:Dimension/"
+        "md:Properties[md:Name='Ссылка']/md:Type",
+        namespaces,
+    )
+    if len(types) != 1 or not len(types[0]):
+        raise RuntimeError(f"Expected one nonempty Ссылка dimension type in {description}")
+
+    # Locate the validated XML subtree without reserializing the export:
+    # namespace prefixes, BOM, CRLF and unrelated formatting must be retained.
+    pattern = re.compile(
+        rb"<Dimension\b[^>]*>\s*<Properties>\s*<Name>"
+        + "Ссылка".encode("utf-8")
+        + rb"</Name>(?:(?!</Properties>).)*?(<Type>.*?</Type>)",
+        re.DOTALL,
+    )
+    matches = list(pattern.finditer(content))
+    if len(matches) != 1:
+        raise RuntimeError(f"Cannot locate the Ссылка dimension type in {description}")
+    return matches[0].span(1)
+
+
+def preserve_demo_reference_type(core_content, demo_content):
+    core_start, core_end = reference_type_span(core_content, "core deferred register")
+    demo_start, demo_end = reference_type_span(demo_content, "demo deferred register")
+    return core_content[:core_start] + demo_content[demo_start:demo_end] + core_content[core_end:]
+
+
 def validate_sync_paths(core_source, demo_source, demo_repository):
     conflicts = []
 
@@ -177,8 +216,20 @@ def validate_sync_paths(core_source, demo_source, demo_repository):
 
         demo_relative_path = Path("src") / relative_path
 
-        if git_status(demo_repository, demo_relative_path) and not same_path(source, destination):
-            conflicts.append(os.fspath(demo_relative_path))
+        if not git_status(demo_repository, demo_relative_path) or same_path(source, destination):
+            continue
+
+        if relative_path_text == DEFERRED_REGISTER_PATH and destination.is_file():
+            demo_content = destination.read_bytes()
+            if preserve_demo_reference_type(source.read_bytes(), demo_content) == demo_content:
+                continue
+            # A local type customization is preserved even when core changed
+            # other register properties. Any other local edits remain conflicts.
+            head_content = head_file(demo_repository, demo_relative_path)
+            if preserve_demo_reference_type(head_content, demo_content) == demo_content:
+                continue
+
+        conflicts.append(os.fspath(demo_relative_path))
 
     if conflicts:
         formatted_paths = "\n".join(f"  {path}" for path in conflicts)
@@ -230,15 +281,19 @@ def metadata_versions(xml_content, description):
     return result
 
 
-def head_config_dump(demo_repository):
+def head_file(demo_repository, relative_path):
     result = subprocess.run(
-        ["git", "-C", os.fspath(demo_repository), "show", "HEAD:src/ConfigDumpInfo.xml"],
+        ["git", "-C", os.fspath(demo_repository), "show", "HEAD:" + relative_path.as_posix()],
         check=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     )
 
     return result.stdout
+
+
+def head_config_dump(demo_repository):
+    return head_file(demo_repository, Path("src/ConfigDumpInfo.xml"))
 
 
 def validate_metadata(core_metadata, demo_metadata, head_metadata):
@@ -274,7 +329,7 @@ def validate_metadata(core_metadata, demo_metadata, head_metadata):
         if head_value is None:
             # A manually integrated new object is safe only when it already
             # matches core. validate_sync_paths also protects its local files.
-            if demo_metadata[name] != core_metadata[name]:
+            if name != DEFERRED_REGISTER_METADATA and demo_metadata[name] != core_metadata[name]:
                 raise RuntimeError(f"New linked metadata differs from core: {name}")
             continue
 
@@ -283,7 +338,7 @@ def validate_metadata(core_metadata, demo_metadata, head_metadata):
         if head_id != demo_id:
             raise RuntimeError(f"Metadata UUID differs from demo HEAD for {name}")
 
-        if demo_version not in (head_version, core_version):
+        if name != DEFERRED_REGISTER_METADATA and demo_version not in (head_version, core_version):
             raise RuntimeError(
                 f"Local configVersion was changed for {name}. "
                 "Commit or stash that change before synchronization."
@@ -295,7 +350,9 @@ def replace_config_versions(demo_content, core_metadata):
     text = demo_content.decode("utf-8-sig")
 
     for name, (_, version) in sorted(core_metadata.items()):
-        if version is None:
+        # This register has a deployment-specific field type, so its root
+        # configVersion belongs to the demo export. Child forms still track core.
+        if version is None or name == DEFERRED_REGISTER_METADATA:
             continue
         tag_pattern = re.compile(
             r'<Metadata\b(?=[^>]*\bname="' + re.escape(name) + r'")[^>]*>'
@@ -333,6 +390,10 @@ def synchronize(args):
     ensure_inside(core_source, core_repository)
     ensure_inside(demo_source, demo_repository)
     validate_sync_paths(core_source, demo_source, demo_repository)
+    updated_register = preserve_demo_reference_type(
+        (core_source / DEFERRED_REGISTER_PATH).read_bytes(),
+        (demo_source / DEFERRED_REGISTER_PATH).read_bytes(),
+    )
 
     core_dump_path = core_source / "ConfigDumpInfo.xml"
     demo_dump_path = demo_source / "ConfigDumpInfo.xml"
@@ -345,7 +406,11 @@ def synchronize(args):
 
     for relative_path_text in SYNC_PATHS:
         relative_path = Path(relative_path_text)
-        replace_path(core_source / relative_path, demo_source / relative_path)
+        if relative_path_text == DEFERRED_REGISTER_PATH:
+            if (demo_source / relative_path).read_bytes() != updated_register:
+                (demo_source / relative_path).write_bytes(updated_register)
+        else:
+            replace_path(core_source / relative_path, demo_source / relative_path)
 
     if updated_dump != demo_content:
         demo_dump_path.write_bytes(updated_dump)

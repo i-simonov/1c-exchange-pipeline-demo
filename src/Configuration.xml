@@ -135,7 +135,6 @@
 			<ScheduledJob>КОД_ЗагрузкаСообщений</ScheduledJob>
 			<ScheduledJob>КОД_ОтложенныйПроцессинг</ScheduledJob>
 			<ScheduledJob>КОД_ПовторнаяЗагрузкаСообщений</ScheduledJob>
-			<DefinedType>КОД_ОбъектыОтложеннойОбработки</DefinedType>
 			<Constant>Демо_КОД_ВерсияДанных</Constant>
 			<Constant>КОД_ПорцияЗагрузкиСообщений</Constant>
 			<Catalog>Демо_КОД_КатегорииТоваров</Catalog>

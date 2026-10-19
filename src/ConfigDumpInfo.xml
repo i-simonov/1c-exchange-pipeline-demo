@@ -102,7 +102,6 @@
 		<Metadata name="DataProcessor.КОД_РучнаяРегистрация.Form.ВыборОбъектовОтбором.Form" id="b77a7512-54c0-43ff-b311-ca17edcf2f9b.0" configVersion="f2b07efe99e8f5361d14aa24b0d4908f9f79b600"/>
 		<Metadata name="DataProcessor.КОД_РучнаяРегистрация.Form.Форма" id="f67665ac-c6b9-4b16-9148-edbaaf90d492" configVersion="cb379f6b45ec18a8898f82eda0e33dd067104ab0"/>
 		<Metadata name="DataProcessor.КОД_РучнаяРегистрация.Form.Форма.Form" id="f67665ac-c6b9-4b16-9148-edbaaf90d492.0" configVersion="97926a0b07bab7a1ced3141200a0cfc39b5f8d69"/>
-		<Metadata name="DefinedType.КОД_ОбъектыОтложеннойОбработки" id="7ecca7ac-578e-4632-a8a7-89ec4210e1e0" configVersion="a1dc13cc1abcc4730c8a620ccbc3237c746bc530"/>
 		<Metadata name="Document.Демо_Заказ" id="3f2e5168-cf4b-4d0a-9e41-fdcb1e8e4fbe" configVersion="eb9f3852a3f2c12e356634781dc53ab9a8b6c36f">
 			<Metadata name="Document.Демо_Заказ.TabularSection.Товары.Attribute.Товар" id="537e3c30-577e-48a1-952d-f15d41a8b0f1"/>
 			<Metadata name="Document.Демо_Заказ.TabularSection.Товары" id="599d4ed4-40c6-4270-8512-ed42429b1193"/>
