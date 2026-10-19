@@ -8,6 +8,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Демо данные</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment/>
 			<IncludeHelpInContents>true</IncludeHelpInContents>
@@ -20,7 +24,14 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Демо_КОД_Товары</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Демо_КОД_СкладыХранения</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.Демо_Заказ</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.Демо_КОД_ИсходящаяОчередьСообщений</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.КОД_ИсходящаяОчередьСообщений</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.КОД_ОтложенныйПроцессинг</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DefinedType.КОД_ОбъектыОтложеннойОбработки</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.КОД_ОшибкиЗагрузкиСообщений</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.КОД_ВходящаяОчередьСообщений</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.КОД_СостоянияОтложеннойОбработки</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.КОД_ВидыОбработкиДокументов</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.Демо_Заказы</xr:Item>
 			</Content>
 		</Properties>
 		<ChildObjects/>

@@ -24,6 +24,36 @@ SYNC_PATHS = (
     "DataProcessors/КОД_РучнаяРегистрация.xml",
     "DataProcessors/КОД_РучнаяРегистрация",
     "Languages/Русский.xml",
+    "CommonModules/КОД_ДиспетчерЗагрузкиСообщений.xml",
+    "CommonModules/КОД_ДиспетчерЗагрузкиСообщений",
+    "CommonModules/КОД_ОтложенныйПроцессинг.xml",
+    "CommonModules/КОД_ОтложенныйПроцессинг",
+    "CommonModules/КОД_ПовторнаяЗагрузкаСообщений.xml",
+    "CommonModules/КОД_ПовторнаяЗагрузкаСообщений",
+    "DataProcessors/КОД_КонвейерОбработчиковЗагрузкаБазовый.xml",
+    "DataProcessors/КОД_КонвейерОбработчиковЗагрузкаБазовый",
+    "InformationRegisters/КОД_ВходящаяОчередьСообщений.xml",
+    "InformationRegisters/КОД_ВходящаяОчередьСообщений",
+    "InformationRegisters/КОД_ОтложенныйПроцессинг.xml",
+    "InformationRegisters/КОД_ОтложенныйПроцессинг",
+    "InformationRegisters/КОД_ОшибкиЗагрузкиСообщений.xml",
+    "InformationRegisters/КОД_ОшибкиЗагрузкиСообщений",
+    "Constants/КОД_ПорцияЗагрузкиСообщений.xml",
+    "Enums/КОД_ВидыОбработкиДокументов.xml",
+    "Enums/КОД_СостоянияОтложеннойОбработки.xml",
+    "ScheduledJobs/КОД_ЗагрузкаСообщений.xml",
+    "ScheduledJobs/КОД_ОтложенныйПроцессинг.xml",
+    "ScheduledJobs/КОД_ПовторнаяЗагрузкаСообщений.xml",
+    "EventSubscriptions/КОД_ОтложеннаяОбработкаПередУдалениемСправочники.xml",
+    "EventSubscriptions/КОД_ОтложеннаяОбработкаПриЗаписиСправочники.xml",
+    "EventSubscriptions/КОД_ОтложеннаяОбработкаУдаленияПроведения.xml",
+    "EventSubscriptions/КОД_ОтложенноеПроведениеОбработкаПроведения.xml",
+    "EventSubscriptions/КОД_ОтложенноеПроведениеПередУдалением.xml",
+    "EventSubscriptions/КОД_ОтложенноеПроведениеПриЗаписи.xml",
+    "InformationRegisters/КОД_ИсходящаяОчередьСообщений.xml",
+    "InformationRegisters/КОД_ИсходящаяОчередьСообщений",
+    "DataProcessors/КОД_Обработчик_ОтправительСообщенияВОчередь.xml",
+    "DataProcessors/КОД_Обработчик_ОтправительСообщенияВОчередь",
 )
 
 METADATA_PREFIXES = (
@@ -34,6 +64,27 @@ METADATA_PREFIXES = (
     "DataProcessor.КОД_РеестрСценариевРегистрация_ИмяПланаОбмена",
     "DataProcessor.КОД_РучнаяРегистрация",
     "Language.Русский",
+    "CommonModule.КОД_ДиспетчерЗагрузкиСообщений",
+    "CommonModule.КОД_ОтложенныйПроцессинг",
+    "CommonModule.КОД_ПовторнаяЗагрузкаСообщений",
+    "DataProcessor.КОД_КонвейерОбработчиковЗагрузкаБазовый",
+    "InformationRegister.КОД_ВходящаяОчередьСообщений",
+    "InformationRegister.КОД_ОтложенныйПроцессинг",
+    "InformationRegister.КОД_ОшибкиЗагрузкиСообщений",
+    "Constant.КОД_ПорцияЗагрузкиСообщений",
+    "Enum.КОД_ВидыОбработкиДокументов",
+    "Enum.КОД_СостоянияОтложеннойОбработки",
+    "ScheduledJob.КОД_ЗагрузкаСообщений",
+    "ScheduledJob.КОД_ОтложенныйПроцессинг",
+    "ScheduledJob.КОД_ПовторнаяЗагрузкаСообщений",
+    "EventSubscription.КОД_ОтложеннаяОбработкаПередУдалениемСправочники",
+    "EventSubscription.КОД_ОтложеннаяОбработкаПриЗаписиСправочники",
+    "EventSubscription.КОД_ОтложеннаяОбработкаУдаленияПроведения",
+    "EventSubscription.КОД_ОтложенноеПроведениеОбработкаПроведения",
+    "EventSubscription.КОД_ОтложенноеПроведениеПередУдалением",
+    "EventSubscription.КОД_ОтложенноеПроведениеПриЗаписи",
+    "InformationRegister.КОД_ИсходящаяОчередьСообщений",
+    "DataProcessor.КОД_Обработчик_ОтправительСообщенияВОчередь",
 )
 
 
@@ -167,6 +218,10 @@ def metadata_versions(xml_content, description):
         name = element.attrib.get("name")
 
         if name and is_linked_metadata(name):
+            if name in result:
+                raise RuntimeError(f"Duplicate linked metadata in {description}: {name}")
+            if not element.attrib.get("id"):
+                raise RuntimeError(f"Metadata UUID is missing in {description}: {name}")
             result[name] = (
                 element.attrib.get("id"),
                 element.attrib.get("configVersion"),
@@ -210,13 +265,18 @@ def validate_metadata(core_metadata, demo_metadata, head_metadata):
         if core_id != demo_id:
             raise RuntimeError(f"Metadata UUID differs for {name}: core={core_id}, demo={demo_id}")
 
-        if core_version is None or demo_version is None:
-            raise RuntimeError(f"configVersion is missing for linked metadata: {name}")
+        # Dimensions, resources and attributes have UUIDs but no configVersion.
+        if (core_version is None) != (demo_version is None):
+            raise RuntimeError(f"configVersion presence differs for linked metadata: {name}")
 
         head_value = head_metadata.get(name)
 
         if head_value is None:
-            raise RuntimeError(f"Linked metadata is missing in demo HEAD: {name}")
+            # A manually integrated new object is safe only when it already
+            # matches core. validate_sync_paths also protects its local files.
+            if demo_metadata[name] != core_metadata[name]:
+                raise RuntimeError(f"New linked metadata differs from core: {name}")
+            continue
 
         head_id, head_version = head_value
 
@@ -235,6 +295,8 @@ def replace_config_versions(demo_content, core_metadata):
     text = demo_content.decode("utf-8-sig")
 
     for name, (_, version) in sorted(core_metadata.items()):
+        if version is None:
+            continue
         tag_pattern = re.compile(
             r'<Metadata\b(?=[^>]*\bname="' + re.escape(name) + r'")[^>]*>'
         )
@@ -279,12 +341,11 @@ def synchronize(args):
     demo_metadata = metadata_versions(demo_content, "demo ConfigDumpInfo.xml")
     head_metadata = metadata_versions(head_config_dump(demo_repository), "demo HEAD ConfigDumpInfo.xml")
     validate_metadata(core_metadata, demo_metadata, head_metadata)
+    updated_dump = replace_config_versions(demo_content, core_metadata)
 
     for relative_path_text in SYNC_PATHS:
         relative_path = Path(relative_path_text)
         replace_path(core_source / relative_path, demo_source / relative_path)
-
-    updated_dump = replace_config_versions(demo_content, core_metadata)
 
     if updated_dump != demo_content:
         demo_dump_path.write_bytes(updated_dump)
