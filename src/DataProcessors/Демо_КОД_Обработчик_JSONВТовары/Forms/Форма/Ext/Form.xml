@@ -21,8 +21,8 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
-		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<InputField name="ПланОбмена" id="3">
@@ -56,8 +56,6 @@
 						<TextDocumentField name="ПолеДжсон" id="13">
 							<DataPath>ПолеДжсон</DataPath>
 							<Height>25</Height>
-							<HorizontalStretch>true</HorizontalStretch>
-							<VerticalStretch>true</VerticalStretch>
 							<ContextMenu name="ПолеДжсонКонтекстноеМеню" id="14"/>
 							<ExtendedTooltip name="ПолеДжсонРасширеннаяПодсказка" id="15"/>
 						</TextDocumentField>
@@ -82,6 +80,30 @@
 							<ContextMenu name="ТаблицаСообщениеОбъектКонтекстноеМеню" id="19"/>
 							<AutoCommandBar name="ТаблицаСообщениеОбъектКоманднаяПанель" id="20"/>
 							<ExtendedTooltip name="ТаблицаСообщениеОбъектРасширеннаяПодсказка" id="21"/>
+							<SearchStringAddition name="ТаблицаСообщениеОбъектСтрокаПоиска" id="37">
+								<AdditionSource>
+									<Item>ТаблицаСообщениеОбъект</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаСообщениеОбъектСтрокаПоискаКонтекстноеМеню" id="38"/>
+								<ExtendedTooltip name="ТаблицаСообщениеОбъектСтрокаПоискаРасширеннаяПодсказка" id="39"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаСообщениеОбъектСостояниеПросмотра" id="40">
+								<AdditionSource>
+									<Item>ТаблицаСообщениеОбъект</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаСообщениеОбъектСостояниеПросмотраКонтекстноеМеню" id="41"/>
+								<ExtendedTooltip name="ТаблицаСообщениеОбъектСостояниеПросмотраРасширеннаяПодсказка" id="42"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаСообщениеОбъектУправлениеПоиском" id="43">
+								<AdditionSource>
+									<Item>ТаблицаСообщениеОбъект</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаСообщениеОбъектУправлениеПоискомКонтекстноеМеню" id="44"/>
+								<ExtendedTooltip name="ТаблицаСообщениеОбъектУправлениеПоискомРасширеннаяПодсказка" id="45"/>
+							</SearchControlAddition>
 							<ChildItems>
 								<InputField name="ТаблицаСообщениеОбъектСообщение" id="22">
 									<DataPath>ТаблицаСообщениеОбъект.Сообщение</DataPath>
